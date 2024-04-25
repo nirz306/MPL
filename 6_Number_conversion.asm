@@ -1,31 +1,36 @@
 
-;
+;Write 64 bit ALP to convert 4-digit Hex number into its equivalent
+;BCD number and 5-digit BCD number into its equivalent HEX
+;number. Make your program user friendly to accept the choice from
+;user for:
+;a) HEX to BCD b) BCD to HEX c) EXIT
+
 section .data
     menuMsg: db "1. HEX to BCD", 0x0A
              db "2. BCD to HEX", 0x0A
              db "3. Exit", 0x0A
-    menuLen equ $ - menuMsg
+    menuLen equ $ - menuMsg                         ;calculates the length of the menuMsg string.
 
-    choicePrompt: db "Enter your Choice: "
+    choicePrompt: db "Enter your Choice: "           ;initialized choicePrompt message
     choicePromptLen equ $ - choicePrompt
 
-    hexPrompt: db "Enter HEX number: "
+    hexPrompt: db "Enter HEX number: "                ;initialized hexPrompt message
     hexPromptLen equ $ - hexPrompt
 
-    bcdPrompt: db "Enter BCD number: "
+    bcdPrompt: db "Enter BCD number: "                ;initialized badPrompt message
     bcdPromptLen equ $ - bcdPrompt
 
-    bcdResultMsg: db "Equivalent BCD number is: "
+    bcdResultMsg: db "Equivalent BCD number is: "        ;initialized bcdResult message
     bcdResultLen equ $ - bcdResultMsg
 
     hexResultMsg: db "Equivalent HEX number is: "
     hexResultLen equ $ - hexResultMsg
 
-    newLine: db " ", 0x0A
+    newLine: db " ", 0x0A ;used for newline
     newLineLen equ $ - newLine
 
-section .bss
-    number: resb 6
+section .bss                                            ;bss section allocates memory for variables that the program will use during its execution. These variables are uninitialized at the start of the program and may be filled with values as the program runs
+    number: resb 6                                       ;resb: reserves byte 
     result: resb 4
     answer: resb 4
     digitCount: resb 01
@@ -51,9 +56,9 @@ menu:
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, menuMsg
+    mov rsi, menuMsg        
     mov rdx, menuLen
-    syscall
+    syscall                            ;system call is made to print the menu msg(different options)
 
     mov rax, 1
     mov rdi, 1
