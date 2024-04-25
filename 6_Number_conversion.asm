@@ -41,16 +41,16 @@ global _start
 _start:
 
 menu:
-    ; Display menu options
-    mov rax, 1
-    mov rdi, 1
-    mov rsi, newLine ; Newline
-    mov rdx, newLineLen
-    syscall
+    ; Display menu options            
+    mov rax, 1                            ; read instruction
+    mov rdi, 1                            ; stdin file descriptor
+    mov rsi, newLine                      ; memory location where the input is to be stored
+    mov rdx, newLineLen                   ; number of bytes to be read (16 bytes for 64 bit hexadecimal number and 1 byte for newline character)
+    syscall                               ; system call to read the input
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, newLine ; Newline
+    mov rsi, newLine  
     mov rdx, newLineLen
     syscall
 
@@ -72,7 +72,7 @@ menu:
     mov rdx, 02
     syscall
 
-    cmp byte[userChoice], 31H
+    cmp byte[userChoice], 31H    //userChoice madhli value la 31H(ASCI eqivalent 1) sobat compare karta
     je case1
 
     cmp byte[userChoice], 32H
