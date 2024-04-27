@@ -59,12 +59,11 @@ section .text
   global _start
   _start:
   
-  extern spaces, enters, occ ; extern directive identifies Proc/variable
-  defined in another source module
-  mov rax,2 ;open file cursor goes in end of file
-  mov rdi, fname ;file name as second parameter
-  mov rsi,2 ;0=read only,1=write only 2=read/write mode
-  mov rdx,0777 ; Setting permission for read, write and execute by
+  extern spaces, enters, occ ; extern directive identifies Proc/variable defined in another source module
+  mov rax,2                  ; open file cursor goes in end of file
+  mov rdi, fname             ; file name as second parameter
+  mov rsi,2                  ; 0=read only,1=write only 2=read/write mode
+  mov rdx,0777               ; Setting permission for read, write and execute by
   all
   syscall
   
