@@ -48,7 +48,6 @@ section .bss
 %macro scall 4 ; macro call for RW
   mov rax,%1
   mov rdi,%2
-  
   mov rsi,%3
   mov rdx,%4
   syscall
