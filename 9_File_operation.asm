@@ -142,24 +142,27 @@ scall 1,1,new,new_len
 ret
 
 ; ************ check new line ****************
-enters:mov rsi,buffer
-up2:
-mov al, byte[rsi]
-cmp al,0AH ;check enter key = 0A or 10 (linefeed or /n)
-je next5
-inc rsi
-dec byte[cnt2]
-jnz up2
+enters:
+  mov rsi,buffer
+  up2:
+    mov al, byte[rsi]
+    cmp al,0AH ;check enter key = 0A or 10 (linefeed or /n)
+    je next5
+    inc rsi
+    dec byte[cnt2]
+    jnz up2
 
-jmp next6
-next5:inc rsi
-inc byte[ncount] ;new line counter increment
-dec byte[cnt2]
-jnz up2
-next6:add byte[ncount], 30h ; hex to ASCII
-scall 1,1,ncount, 2 ; result of new line count
-scall 1,1,new,new_len
-ret
+    jmp next6
+  next5:
+    inc rsi
+    inc byte[ncount] ;new line counter increment
+    dec byte[cnt2]
+    jnz up2
+  next6:
+    add byte[ncount], 30h ; hex to ASCII
+    scall 1,1,ncount, 2 ; result of new line count
+    scall 1,1,new,new_len
+    ret
 
 ;*********** occurrence of character *****************
 occ:mov rsi,buffer
