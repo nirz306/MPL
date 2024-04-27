@@ -103,7 +103,7 @@ section .text
 ;P2.asm
 section .data
   extern msg6,len6,scount,ncount,occrance,new,new_len
-  section .bss
+section .bss
   extern cnt,cnt2,cnt3,scall,buffer
 
 %macro scall 4
