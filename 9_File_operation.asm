@@ -56,47 +56,48 @@ section .bss
 section .text
   global _start
   _start:
-  
-  extern spaces, enters, occ ; extern directive identifies Proc/variable defined in another source module
-  mov rax,2                  ; open file cursor goes in end of file
-  mov rdi, fname             ; file name as second parameter
-  mov rsi,2                  ; 0=read only,1=write only 2=read/write mode
-  mov rdx,0777               ; Setting permission for read, write and execute by
-  all
-  syscall
-  
-  mov qword[fd],rax
-  BT rax,63 ; CF=0 read file
-  jc next ;CF=1
-  scall 1,1,msg,len ;File open successfully
-  jmp next2
-  next: scall 1,1,msg2,len2 ;CF=1 or Error to open file
-  jmp exit
-
-  next2:
-    scall 0,[fd],buffer, 200 ;macro call to read from file
-    mov qword[buf_len],rax
-    mov qword[cnt],rax
-    mov qword[cnt2],rax
-    mov qword[cnt3],rax
-
-    scall 1,1,msg3,len3 ;No of Blank spaces :
-    call spaces
-    scall 1,1,msg4,len4 ;No of NewLines:
-    call enters
-    scall 1,1,msg5,len5 ;Enter character:
-    scall 0,1,occr,2 ; read and print input chr
-    mov bl, byte[occr]
-    call occ
-
-    scall 1,1,msg1,len1 ;file close successfully
-    mov rax, 3 ;close Fname (abc.txt)
-    mov rdi, fname
+    extern spaces, enters, occ     ; extern directive identifies Proc/variable defined in another source module
+    mov rax,2                      ; open file cursor goes in end of file
+    mov rdi, fname                 ; file name as second parameter
+    mov rsi,2                      ; 0=read only,1=write only 2=read/write mode
+    mov rdx,0777                   ; Setting permission for read, write and execute by all
     syscall
+  
+    mov qword[fd],rax
+    BT rax,63                      ;CF=0 read file
+    jc next                        ;if CF=1 (carry flag) then jump
+    scall 1,1,msg,len              ;File open successfully
+    jmp next2
+
+    next: 
+      scall 1,1,msg2,len2 ;CF=1 or Error to open file
+      jmp exit
+
+    next2:
+      scall 0,[fd],buffer, 200 ;macro call to read from file
+      mov qword[buf_len],rax
+      mov qword[cnt],rax
+      mov qword[cnt2],rax
+      mov qword[cnt3],rax
+
+      scall 1,1,msg3,len3     ;No of Blank spaces :
+      call spaces
+      scall 1,1,msg4,len4     ;No of NewLines:
+      call enters
+      scall 1,1,msg5,len5     ;Enter character:
+      scall 0,1,occr,2        ;read and print input chr
+      mov bl, byte[occr]
+      call occ
+
+      scall 1,1,msg1,len1     ;file close successfully
+      mov rax, 3              ;close Fname (abc.txt)
+      mov rdi, fname
+      syscall
     
-    exit:mov rax,60 ;Program end
-    mov rdi,0
-    syscall 
+      exit:
+        mov rax,60                 ;Program end
+        mov rdi,0
+        syscall 
 
 ;********* ***********P2 file ****************
 ;P2.asm
@@ -124,21 +125,22 @@ spaces:
   mov rsi,buffer
 up:
   mov al, byte[rsi]
-  cmp al,20H ; space character (ASCII code 20h)
-  
-  je next3
+  cmp al,20H           ; space character (ASCII code 20h)
+  je next3             ;jump if equal(jar space then jump)
   inc rsi
   dec byte[cnt]
-  jnz up
-  jmp next4
-  next3:inc rsi
-  inc byte[scount] ;increment space count
+  jnz up               ; jump to up if cnt is not zero             
+  jmp next4            ; else jump to next4( cnt == 0)
+
+next3:
+  inc rsi
+  inc byte[scount]     ;increment space count
   dec byte[cnt]
   jnz up
   
   next4:
-    add byte[scount], 30h ; hex to ASCII
-    scall 1,1,scount, 2 ; result of no of spaces count
+    add byte[scount], 30h   ;hex to ASCII
+    scall 1,1,scount, 2     ;result of no of spaces count
     scall 1,1,new,new_len
     ret
 
@@ -147,18 +149,19 @@ enters:
   mov rsi,buffer
   up2:
     mov al, byte[rsi]
-    cmp al,0AH ;check enter key = 0A or 10 (linefeed or /n)
-    je next5
+    cmp al,0AH               ;check enter key = 0A or 10 (linefeed or /n)
+    je next5                 ; jump if equal
     inc rsi
+    dec byte[cnt2]
+    jnz up2
+    jmp next6
+
+  next5:
+    inc rsi
+    inc byte[ncount]         ;new line counter increment
     dec byte[cnt2]
     jnz up2
 
-    jmp next6
-  next5:
-    inc rsi
-    inc byte[ncount] ;new line counter increment
-    dec byte[cnt2]
-    jnz up2
   next6:
     add byte[ncount], 30h ; hex to ASCII
     scall 1,1,ncount, 2 ; result of new line count
@@ -168,26 +171,27 @@ enters:
 ;*********** occurrence of character *****************
 occ:
   mov rsi,buffer
-up3:
-  mov al, byte[rsi]
-  cmp al,bl ; bl = read input chr and al=no of characters in file
-  buffer ;cmp both
-  je next7
-  inc rsi
-  dec byte[cnt3]
-  jnz up3
-  jmp next8
-  next7:inc rsi
-  inc byte[occrance]
-  dec byte[cnt3]
-  jnz up3
-next8:
-  add byte[occrance], 30h ; hex to ASCII
+  up3:
+    mov al, byte[rsi]
+    cmp al,bl ; bl = read input chr and al=no of characters in file
+    buffer ;cmp both
+    je next7
+    inc rsi
+    dec byte[cnt3]
+    jnz up3
+    jmp next8
+  next7:
+    inc rsi
+    inc byte[occrance]
+    dec byte[cnt3]
+    jnz up3
+  next8:
+    add byte[occrance], 30h ; hex to ASCII
 
-  scall 1,1,msg6,len6 ;print No. of char occurrence msg
-  scall 1,1,occrance, 1 ; result of No. of char occurrence
-  scall 1,1,new,new_len
-  ret
+    scall 1,1,msg6,len6 ;print No. of char occurrence msg
+    scall 1,1,occrance, 1 ; result of No. of char occurrence
+    scall 1,1,new,new_len
+    ret
 
 
 
