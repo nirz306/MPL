@@ -36,8 +36,7 @@ section .data
 
 section .bss
   global cnt,cnt2,cnt3,buffer
-  ; global variables created in .data and .bss sections but declared outside
-  the same segment
+  ; global variables created in .data and .bss sections but declared outside the same segment
   fd resb 17 ;file descriptor
   buffer resb 200
   buf_len resb 17
