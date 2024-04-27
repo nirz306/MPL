@@ -63,11 +63,11 @@ _start:
   Stop                                           ;exit program
 ;************ recursive Factorial Procedure *****************
   factP:
-    dec rbx
+    dec rbx                                      ;decrement rbx by 1
     cmp rbx,01
-    je b1
+    je b1                                        ;jump if rbx == 1 to b1
     cmp rbx,00
-    je b1
+    je b1                                        ;jump if rbx == 0 to b1
     mul rbx
     call factP
   b1:
@@ -75,7 +75,7 @@ _start:
 
 ;********************* Ascii Hex - Hex **************
   aToH:
-    up1: rol bx,04 ;rotate number left by four bits
+    up1: rol bx,04                                 ;rotate number left by four bits
     mov al,[rsi]
     cmp al,39H
     jbe A2
