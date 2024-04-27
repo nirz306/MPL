@@ -136,10 +136,11 @@ up:
   dec byte[cnt]
   jnz up
   
-  next4:add byte[scount], 30h ; hex to ASCII
-  scall 1,1,scount, 2 ; result of no of spaces count
-  scall 1,1,new,new_len
-  ret
+  next4:
+    add byte[scount], 30h ; hex to ASCII
+    scall 1,1,scount, 2 ; result of no of spaces count
+    scall 1,1,new,new_len
+    ret
 
 ; ************ check new line ****************
 enters:
