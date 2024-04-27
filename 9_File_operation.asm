@@ -64,7 +64,7 @@ section .text
     syscall
   
     mov qword[fd],rax
-    BT rax,63                      ;CF=0 read file
+    BT rax,63                      ;CF=0 read file checks the 64th bit in the rax (if its 1 then CF is set)
     jc next                        ;if CF=1 (carry flag) then jump
     scall 1,1,msg,len              ;File open successfully
     jmp next2
