@@ -3,7 +3,7 @@
 ; c) Occurrence of a particular character.
 ; Accept the data from the text file.
 ;The text file has to be accessed during Program_1 execution ;and write
-FAR PROCEDURES
+;FAR PROCEDURES
 ; in Program_2 for the rest of the processing.
 ;Use of PUBLIC and EXTERN directives is mandatory.
 
