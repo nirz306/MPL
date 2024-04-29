@@ -89,21 +89,21 @@ _start:
   
   add_fun:
     IO 1,1,madd,l4
-    mov qword[answer],0
+    mov qword[answer],0                          ;creating a storage to add numbers 
     IO 0,0,n1,17
     IO 1,1,n1,17
-    call ascii_to_hex
+    call ascii_to_hex                            ;je apan input deto te asci asat so tyala hex madhe convert karayla 
     add qword[answer],rbx
     IO 0,0,n1,17
     IO 1,1,n1,17
-    call ascii_to_hex
+    call ascii_to_hex                            
     add qword[answer],rbx
     mov rbx,[answer]
     IO 1,1,mspace,1
     IO 1,1,m_result,m_result_l
   
-    call hex_to_ascii
-    Ret
+    call hex_to_ascii                            ;parat user la ascii madhe return karel
+    Ret  
 
   sub_fun:
     IO 1,1,msub,l5
