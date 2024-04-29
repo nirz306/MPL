@@ -40,3 +40,11 @@ loop :
 ;Enter number: 7625891348759126
 ;The number is: 7625891348759126
 ;[pict@localhost Documents]$ ^
+
+
+
+;Algorithm
+;1)Text message asking user to enter 5 numbers
+;2)Reserve byte to store a 64 bit number 
+;3)Then for each input take the number and print the no( 17is taken because 16bytes for storing 64bit hex no and 1byte to press enter)
+;4)Loop until the count is 0.
