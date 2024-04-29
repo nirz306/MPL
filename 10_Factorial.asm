@@ -1,5 +1,5 @@
 ; Write x86 ALP to find the factorial of a given integer number on a command line
-by using recursion.
+;by using recursion.
 ; Explicit stack manipulation is expected in the code.
 ;------------------------------ .data section—---------------------------------------
 section .data
@@ -31,9 +31,9 @@ section .bss
 section .txt
 global _start
 _start:
-  pop rbx ; Remove number of arguments from stack
-  pop rbx ; Remove the program name from stack
-  pop rbx ; Remove the actual number whose factorial is
+  pop rbx                               ; Remove number of arguments from stack
+  pop rbx                               ; Remove the program name from stack
+  pop rbx                               ; Remove the actual number whose factorial is
   ; to be calculated (Address of number) from stack
 
   mov [num],rbx
