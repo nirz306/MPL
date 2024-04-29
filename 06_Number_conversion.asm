@@ -1,12 +1,12 @@
 ;
-Write 16/64 bit ALP to convert 4-digit Hex number into its equivalent BCD
-number and 5-digit BCD number into its equivalent HEX number. Make your
-program user friendly ;to accept the choice from the user for:
-(a) HEX to BCD
-(b) BCD to HEX
-(c) EXIT.
+;Write 16/64 bit ALP to convert 4-digit Hex number into its equivalent BCD
+;number and 5-digit BCD number into its equivalent HEX number. Make your
+;program user friendly ;to accept the choice from the user for:
+;(a) HEX to BCD
+;(b) BCD to HEX
+;(c) EXIT.
 ;Display proper strings to prompt the user while accepting the input and
-displaying the result. (use of 64-bit registers is expected).
+;displaying the result. (use of 64-bit registers is expected).
 
 ;***************define macro **************
 %macro input 4
