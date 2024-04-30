@@ -110,3 +110,18 @@ _start:
 ;./a 04
 ;04
 ;00000024
+
+
+
+;Algorithm
+;Start.
+;Accept the number from user.
+; Convert that number into Hexadecimal(ASCII TO HEX).
+;Compare accepted number with 1,If it is equal to 1 go to
+;step 5,else push the number on stack and decrement the
+;number and go to step 4
+;pop the content of stack and multiply with number
+;repeat the step until stack become empty.
+;Convert the number from HEX to ASCII
+;Print the number.
+;End
