@@ -88,3 +88,27 @@ syscall
 mov rax,60
 mov rdi,00
 syscall
+
+
+
+;Algorithm:
+;Print the message to enter a string
+;Make a system call to store the string in str variable 
+;rax contains the length of the string in hexadecimal 
+;Enter the loop to convert hexadecimal to ascii
+;Make a system call to prin the length of the string
+;Exit the program
+
+
+;STEP1: Get string from user by write system call
+;STEP2: Decrement EAL register by1 stored in RBX (length is stored in EAL register after write system call)
+;STEP3: point rdi to variable which is holding the length of string
+;STEP4: set count as 16
+;STEP5: rotate rbx by 4
+;STEP6: move content of BL to AL and ANDING with 0FH check AL >9
+ ;If yes: ADD 37H
+ ;No: ADD 30 H
+;STEP7: Store converted data into output variable
+;STEP8: increment RDI
+;STEP9: decrement counter 
+;STEP10: repeate STEPS 5 to 9 till counter 0
