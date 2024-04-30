@@ -76,3 +76,18 @@ _start:
     mov rax,60
     mov rdi,00
     syscall
+
+
+;Algorithm
+;STEP1: Get array content from user and print 
+;STEP2: set counter =5 ( array stored 5 elements)
+;STEP3: point RDI to array
+;STEP4: move 0 as maximum number in al register
+;STEP5: compare AL with next array element
+;STEP6: if AL content largest number 
+;If yes: got to STEP 7
+;No: move array element in to AL got to STEP 7
+;STEP7: Increment RDI
+;STEP8: Decrement COUNTER
+;STEP9: repeate STEPS 5 to 9 till counter 0
+;STEP10: Display largest number which is in AL register using HEX to ASCII conversion.
