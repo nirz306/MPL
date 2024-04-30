@@ -221,3 +221,11 @@ _start:
       IO 1,1,mspace,1
     
     ret
+
+
+;Algorithm
+;1.Define the macro for input and output statements
+;2.Begin program and display menu in front of user
+;3.Read the choice of arithmetic operation from the user
+;4.Check the value of choice and accordingly perform the respective operation using procedure call
+;5.Convert the result into ascii value to display the result on the screen
