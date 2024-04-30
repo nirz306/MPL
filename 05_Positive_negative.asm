@@ -100,3 +100,23 @@ Exit:
     mov rax, 60
     mov rdi, 00
     syscall
+
+
+;Algorithm
+;1. Start.
+;2. Initialize an array of 10 numbers or accept 10 numbers from user and store them in one array.
+;3. Initialize pos_counter=0, neg_counter=0, index_reg=array address, counter=10
+;4. Read the number from index_reg into a register.
+;5. Perform addition with 00H and check sign bit
+;6. If sign bit==1 then
+;increment neg_counter=neg_counter+1
+;else
+;increment pos_counter=pos_counter+1
+;end if
+;7. Increment index_reg= index_reg+1
+;8. Decrement counter=counter-1
+;9. If counter!=0 then goto step number 4 else
+;continue
+;10. Print message “Positive numbers are:” and print pos_counter.
+;11. Print message “Negative numbers are:” and print neg_counter.
+;12. Exit.
