@@ -117,8 +117,7 @@ section .bss
 section .text
 global main2
 main2:
-global spaces,enters,occ ; globally get called FAR_PROC for
-spaces,enters,occ
+global spaces,enters,occ ; globally get called FAR_PROC for spaces,enters,occ
 
 ;************checking number of spaces *************
 spaces:  
