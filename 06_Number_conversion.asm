@@ -230,5 +230,26 @@ I/p= AH
 ;0C*A =78 +3
 ;7B - >Ans in hex
 
+;algorithm (hex->bcd)
+;Input:
+    ;Accept a 4-digit hexadecimal number from the user.
+;Conversion:
+    ;Initialize a counter to keep track of the number of digits processed.
+    ;For each digit from the most significant to the least significant:
+    ;Divide the hexadecimal number by 10.
+    ;Store the remainder (which is the digit in decimal) in a buffer.
+    ;Increment the digit count.
+    ;Repeat until all digits have been processed.
+;Output:
+    ;Print the digits stored in the buffer in reverse order.
 
+
+;algorithm (bcd->hex)
+;Input:
+    ;A 5-digit BCD number.
+;Process:
+    ;Convert each pair of BCD digits into its equivalent Hexadecimal representation.
+    ;To do this, multiply each pair by 10 (for the tens place) and add the units place digit.
+;Output: 
+    ;The equivalent Hexadecimal number.
 
