@@ -1,5 +1,5 @@
-Write X86/64 ALP to perform non-overlapped and overlapped block transfer (with and without
-string specific instructions). Blocks containing data can be defined in the data segment.
+;Write X86/64 ALP to perform non-overlapped and overlapped block transfer (with and without
+;string specific instructions). Blocks containing data can be defined in the data segment.
 ;perform nonoverlapped block transfer with string instruction
 section .data
 array db 10h,20h,30h,40h,50h
